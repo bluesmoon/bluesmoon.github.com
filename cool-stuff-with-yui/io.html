@@ -26,10 +26,16 @@ YUI().use("io-base", function(Y) {
 		l.remove();
 	}
     };
+
+    function getdata(e) {
+	var uri = this.get("href");
+	var request = Y.io(uri);    
+	e.preventDefault();
+    };
  
     Y.on('io:complete', complete, Y, ["Fetch data", "Try again", "Seek", "Seek again", "Retry", "Please?"]);
  
-    var request = Y.io(uri);
+    Y.on("click", getdata, "#data-link");
 });
 </script>
 </body>
